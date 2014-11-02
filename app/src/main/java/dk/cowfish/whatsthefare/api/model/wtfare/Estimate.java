@@ -2,6 +2,9 @@ package dk.cowfish.whatsthefare.api.model.wtfare;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Estimate {
     String company;
     @SerializedName("estimated_fare") Double estimatedFare;

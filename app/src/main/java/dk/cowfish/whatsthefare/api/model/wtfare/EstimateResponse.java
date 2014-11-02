@@ -2,8 +2,11 @@ package dk.cowfish.whatsthefare.api.model.wtfare;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
 import java.util.List;
 
+@Parcel
 public class EstimateResponse {
     @SerializedName("start_addr") String pickupAddress;
     @SerializedName("start_latlng") Location pickupLocation;
