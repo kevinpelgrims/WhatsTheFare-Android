@@ -10,7 +10,7 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="dk.cowfish.whatsthefare.views.SearchFragment">
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/pickup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
         android:inputType="text"
         android:hint="@string/hint_pickup_address"/>
 
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/destination"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
