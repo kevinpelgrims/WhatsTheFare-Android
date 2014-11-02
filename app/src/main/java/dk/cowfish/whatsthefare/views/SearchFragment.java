@@ -1,5 +1,6 @@
 package dk.cowfish.whatsthefare.views;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -23,7 +24,12 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 public class SearchFragment extends Fragment {
-    Details pickupDetails, destinationDetails;
+    private OnSearchFragmentInteractionListener listener;
+    private Details pickupDetails, destinationDetails;
+
+    public static SearchFragment newInstance() {
+        return new SearchFragment();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -61,8 +67,7 @@ public class SearchFragment extends Fragment {
                     ApiClient.getWtfApiClient().getEstimate(pickupLocation, destinationLocation, new Callback<EstimateResponse>() {
                         @Override
                         public void success(EstimateResponse estimateResponse, Response response) {
-                            //TODO
-                            estimateResponse.getEstimates();
+                            listener.onGetFareEstimates(estimateResponse);
                         }
 
                         @Override
@@ -73,6 +78,23 @@ public class SearchFragment extends Fragment {
                 }
             }
         });
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            listener = (OnSearchFragmentInteractionListener) activity;
+        }
+        catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + " must implement OnSearchFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
     }
 
     private void handleOnItemClick(AdapterView<?> adapterView, int position, final boolean isPickup) {
@@ -95,5 +117,9 @@ public class SearchFragment extends Fragment {
                 //TODO
             }
         });
+    }
+
+    public interface OnSearchFragmentInteractionListener {
+        public void onGetFareEstimates(EstimateResponse estimateResponse);
     }
 }
