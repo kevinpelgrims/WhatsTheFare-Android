@@ -32,4 +32,13 @@
         android:layout_height="@dimen/control_height"
         android:text="@string/get_fare_estimates"/>
 
+    <ProgressBar
+        android:id="@+id/search_progress"
+        android:visibility="gone"
+        android:layout_width="@dimen/control_height"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/control_margin"
+        android:layout_gravity="center_horizontal"
+        android:indeterminate="true"/>
+
 </LinearLayout>

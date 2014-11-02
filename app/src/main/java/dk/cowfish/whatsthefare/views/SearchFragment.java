@@ -64,9 +64,11 @@ public class SearchFragment extends Fragment {
                 if (pickupDetails != null && destinationDetails != null) {
                     Location pickupLocation = pickupDetails.getGeometry().getLocation();
                     Location destinationLocation = destinationDetails.getGeometry().getLocation();
+                    setProgressVisible(true);
                     ApiClient.getWtfApiClient().getEstimate(pickupLocation, destinationLocation, new Callback<EstimateResponse>() {
                         @Override
                         public void success(EstimateResponse estimateResponse, Response response) {
+                            setProgressVisible(false);
                             listener.onGetFareEstimates(estimateResponse);
                         }
 
@@ -117,6 +119,12 @@ public class SearchFragment extends Fragment {
                 //TODO
             }
         });
+    }
+
+    private void setProgressVisible(boolean visible) {
+        if (getView() != null && getView().findViewById(R.id.search_progress) != null) {
+            getView().findViewById(R.id.search_progress).setVisibility(visible ? View.VISIBLE : View.GONE);
+        }
     }
 
     public interface OnSearchFragmentInteractionListener {
