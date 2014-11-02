@@ -1,6 +1,8 @@
 package dk.cowfish.whatsthefare.api;
 
-import dk.cowfish.whatsthefare.api.model.PlacesResponse;
+import dk.cowfish.whatsthefare.api.model.places.AutoCompleteResponse;
+import dk.cowfish.whatsthefare.api.model.places.DetailsResponse;
+import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.http.GET;
 import retrofit.http.Query;
@@ -21,6 +23,9 @@ public class GooglePlacesApiClient {
 
     public interface GooglePlacesService {
         @GET("/autocomplete/json")
-        PlacesResponse getPlacesAutocomplete(@Query("key") String key, @Query("input") String input);
+        AutoCompleteResponse getPlacesAutocomplete(@Query("key") String key, @Query("input") String input);
+
+        @GET("/details/json")
+        void getPlacesDetails(@Query("key") String key, @Query("reference") String reference, Callback<DetailsResponse> callback);
     }
 }

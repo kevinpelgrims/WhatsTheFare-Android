@@ -1,4 +1,4 @@
-package dk.cowfish.whatsthefare.api.model;
+package dk.cowfish.whatsthefare.api.model.wtfare;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -8,11 +8,11 @@ public class EstimateResponse {
     @SerializedName("start_addr")
     String pickupAddress;
     @SerializedName("start_latlng")
-    Position pickupPosition;
+    Location pickupLocation;
     @SerializedName("dest_addr")
     String destinationAddress;
     @SerializedName("dest_latlng")
-    Position destinationPosition;
+    Location destinationLocation;
     List<Estimate> estimates;
     @SerializedName("distance_meters")
     Integer distance;

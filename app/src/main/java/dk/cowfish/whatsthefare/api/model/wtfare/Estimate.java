@@ -1,4 +1,4 @@
-package dk.cowfish.whatsthefare.api.model;
+package dk.cowfish.whatsthefare.api.model.wtfare;
 
 import com.google.gson.annotations.SerializedName;
 

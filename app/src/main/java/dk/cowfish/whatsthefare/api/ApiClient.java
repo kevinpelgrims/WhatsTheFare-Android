@@ -1,7 +1,7 @@
 package dk.cowfish.whatsthefare.api;
 
-import dk.cowfish.whatsthefare.api.model.EstimateResponse;
-import dk.cowfish.whatsthefare.api.model.Position;
+import dk.cowfish.whatsthefare.api.model.wtfare.EstimateResponse;
+import dk.cowfish.whatsthefare.api.model.wtfare.Location;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.http.GET;
@@ -23,7 +23,7 @@ public class ApiClient {
 
     public interface WtfService {
         @GET("/estimate")
-        void getEstimate(@Query("start") Position pickup, @Query("dest") Position destination, Callback<EstimateResponse> response);
+        void getEstimate(@Query("start") Location pickup, @Query("dest") Location destination, Callback<EstimateResponse> response);
     }
 
 }

@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dk.cowfish.whatsthefare.api.GooglePlacesApiClient;
-import dk.cowfish.whatsthefare.api.model.PlacesPrediction;
-import dk.cowfish.whatsthefare.api.model.PlacesResponse;
+import dk.cowfish.whatsthefare.api.model.places.AutoCompleteResponse;
+import dk.cowfish.whatsthefare.api.model.places.Prediction;
 import dk.cowfish.whatsthefare.config.Config;
 
 public class PlacesAutoCompleteAdapter extends ArrayAdapter<String> implements Filterable {
-    private List<PlacesPrediction> resultList = new ArrayList<PlacesPrediction>();
+    private List<Prediction> resultList = new ArrayList<Prediction>();
 
     public PlacesAutoCompleteAdapter(Context context, int resource) {
         super(context, resource);
@@ -57,13 +57,17 @@ public class PlacesAutoCompleteAdapter extends ArrayAdapter<String> implements F
         };
     }
 
-    private List<PlacesPrediction> autoComplete(String input) {
-        PlacesResponse response = GooglePlacesApiClient.getGooglePlacesService().getPlacesAutocomplete(Config.GOOGLE_PLACES_API_KEY, input);
+    private List<Prediction> autoComplete(String input) {
+        AutoCompleteResponse response = GooglePlacesApiClient.getGooglePlacesService().getPlacesAutocomplete(Config.GOOGLE_PLACES_API_KEY, input);
         if (response != null) {
             return response.getPredictions();
         }
         else {
-            return new ArrayList<PlacesPrediction>();
+            return new ArrayList<Prediction>();
         }
+    }
+
+    public String getItemReference(int position) {
+        return resultList.get(position).getReference();
     }
 }

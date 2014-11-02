@@ -1,6 +1,6 @@
-package dk.cowfish.whatsthefare.api.model;
+package dk.cowfish.whatsthefare.api.model.places;
 
-public class PlacesPrediction {
+public class Prediction {
     String description;
     String reference;
 
