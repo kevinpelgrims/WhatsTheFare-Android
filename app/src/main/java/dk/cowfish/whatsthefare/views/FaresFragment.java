@@ -51,7 +51,7 @@ public class FaresFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         fareEstimatesList.setLayoutManager(layoutManager);
 
-        RecyclerView.Adapter adapter = new FareEstimatesAdapter(estimateResponse.getEstimates());
+        RecyclerView.Adapter adapter = new FareEstimatesAdapter(getActivity(), estimateResponse.getEstimates());
         fareEstimatesList.setAdapter(adapter);
     }
 }
