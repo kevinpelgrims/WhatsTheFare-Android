@@ -12,7 +12,6 @@ public class GooglePlacesApiClient {
         if (googlePlacesService == null) {
             RestAdapter restAdapter = new RestAdapter.Builder()
                     .setEndpoint("https://maps.googleapis.com/maps/api/place")
-                    .setLogLevel(RestAdapter.LogLevel.FULL)
                     .build();
             googlePlacesService = restAdapter.create(GooglePlacesService.class);
         }
