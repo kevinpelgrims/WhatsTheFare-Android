@@ -11,11 +11,13 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import dk.cowfish.whatsthefare.R;
 import dk.cowfish.whatsthefare.api.model.wtfare.Estimate;
 import dk.cowfish.whatsthefare.config.Config;
+import dk.cowfish.whatsthefare.utils.EstimateCompanyComparator;
 
 public class FareEstimatesAdapter extends RecyclerView.Adapter<FareEstimatesAdapter.ViewHolder> {
     private Context context;
@@ -36,6 +38,7 @@ public class FareEstimatesAdapter extends RecyclerView.Adapter<FareEstimatesAdap
     public FareEstimatesAdapter(Context context, List<Estimate> estimates) {
         this.context = context;
         this.estimates = estimates != null ? estimates : new ArrayList<Estimate>();
+        Collections.sort(estimates, new EstimateCompanyComparator());
     }
 
     @Override
