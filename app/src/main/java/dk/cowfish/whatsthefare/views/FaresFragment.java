@@ -50,8 +50,8 @@ public class FaresFragment extends Fragment {
     }
 
     private void setupFareEstimateInfo(View view) {
-        ((TextView) view.findViewById(R.id.fare_estimate_pickup_address)).setText(estimateResponse.getPickupAddress());
-        ((TextView) view.findViewById(R.id.fare_estimate_destination_address)).setText(estimateResponse.getDestinationAddress());
+        ((TextView) view.findViewById(R.id.fare_estimate_pickup_address)).setText(getString(R.string.label_pickup_address, estimateResponse.getPickupAddress()));
+        ((TextView) view.findViewById(R.id.fare_estimate_destination_address)).setText(getString(R.string.label_destination_address, estimateResponse.getDestinationAddress()));
         String timeDistance = "~ " + estimateResponse.getDistance() + "m, " + estimateResponse.getDuration() / 60 + "mins";
         ((TextView) view.findViewById(R.id.fare_estimate_time_distance)).setText(timeDistance);
     }

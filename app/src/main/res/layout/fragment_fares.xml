@@ -11,21 +11,11 @@
     tools:context="dk.cowfish.whatsthefare.views.FaresFragment">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_pickup_address"/>
-
-    <TextView
         android:id="@+id/fare_estimate_pickup_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:singleLine="false"
         tools:text="@string/placeholder_address"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/label_destination_address"/>
 
     <TextView
         android:id="@+id/fare_estimate_destination_address"
