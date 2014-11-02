@@ -4,4 +4,6 @@
 
     <string name="hint_pickup_address">Pickup address</string>
     <string name="hint_destination_address">Destination address</string>
+    
+    <string name="get_fare_estimates">Get fare estimates</string>
 </resources>

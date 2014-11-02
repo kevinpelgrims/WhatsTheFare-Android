@@ -1,7 +1,7 @@
 package dk.cowfish.whatsthefare.api;
 
 import dk.cowfish.whatsthefare.api.model.wtfare.EstimateResponse;
-import dk.cowfish.whatsthefare.api.model.wtfare.Location;
+import dk.cowfish.whatsthefare.api.model.places.Location;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.http.GET;
