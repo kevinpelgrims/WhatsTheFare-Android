@@ -21,7 +21,8 @@ public class MainActivity extends ActionBarActivity implements SearchFragment.On
     @Override
     public void onGetFareEstimates(EstimateResponse estimateResponse) {
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.container, FaresFragment.newInstance(estimateResponse))
+                .replace(R.id.container, FaresFragment.newInstance(estimateResponse))
+                .addToBackStack(null)
                 .commit();
     }
 }
