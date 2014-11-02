@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import org.parceler.Parcels;
 
@@ -44,6 +45,18 @@ public class FaresFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        setupFareEstimateInfo(view);
+        setupFareEstimatesList(view);
+    }
+
+    private void setupFareEstimateInfo(View view) {
+        ((TextView) view.findViewById(R.id.fare_estimate_pickup_address)).setText(estimateResponse.getPickupAddress());
+        ((TextView) view.findViewById(R.id.fare_estimate_destination_address)).setText(estimateResponse.getDestinationAddress());
+        String timeDistance = "~ " + estimateResponse.getDistance() + "m, " + estimateResponse.getDuration() / 60 + "mins";
+        ((TextView) view.findViewById(R.id.fare_estimate_time_distance)).setText(timeDistance);
+    }
+
+    private void setupFareEstimatesList(View view) {
         RecyclerView fareEstimatesList = (RecyclerView) view.findViewById(R.id.fare_estimates_list);
         // This setting improves performance and the size of the view will not change when content changes
         fareEstimatesList.setHasFixedSize(true);

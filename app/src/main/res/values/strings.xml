@@ -6,4 +6,7 @@
     <string name="hint_destination_address">Destination address</string>
     
     <string name="get_fare_estimates">Get fare estimates</string>
+
+    <string name="label_pickup_address">From:</string>
+    <string name="label_destination_address">To:</string>
 </resources>
