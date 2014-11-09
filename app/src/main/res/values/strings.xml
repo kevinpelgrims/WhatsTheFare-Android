@@ -9,4 +9,7 @@
 
     <string name="label_pickup_address">From %s</string>
     <string name="label_destination_address">To %s</string>
+
+    <string name="dialog_no_results_title">No results</string>
+    <string name="dialog_no_results_message">No results were found for these addresses. Change the pickup and/or destination and try again</string>
 </resources>

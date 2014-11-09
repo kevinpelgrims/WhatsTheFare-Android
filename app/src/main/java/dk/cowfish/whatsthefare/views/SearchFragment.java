@@ -1,8 +1,10 @@
 package dk.cowfish.whatsthefare.views;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,7 +71,12 @@ public class SearchFragment extends Fragment {
                         @Override
                         public void success(EstimateResponse estimateResponse, Response response) {
                             setProgressVisible(false);
-                            listener.onGetFareEstimates(estimateResponse);
+                            if (estimateResponse.getEstimates() != null) {
+                                listener.onGetFareEstimates(estimateResponse);
+                            }
+                            else {
+                                showDialog(R.string.dialog_no_results_title, R.string.dialog_no_results_message);
+                            }
                         }
 
                         @Override
@@ -80,6 +87,12 @@ public class SearchFragment extends Fragment {
                 }
             }
         });
+    }
+
+    private void showDialog(@StringRes int titleResource, @StringRes int messageResource) {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+        alertDialog.setTitle(titleResource).setMessage(messageResource).setPositiveButton(android.R.string.ok, null);
+        alertDialog.show();
     }
 
     @Override
